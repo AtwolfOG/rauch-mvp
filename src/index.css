@@ -1,0 +1,378 @@
+@import "tailwindcss";
+
+
+:root {
+  /* Backgrounds */
+  --color-bg: #d0d3ce;             /* Main page background */
+  --color-bg-muted: #c6cac5;       /* Secondary/subdued page areas */
+  --color-surface: #e7eae5;        /* Cards, panels, modals */
+  --color-surface-muted: #d4d4d4;  /* Inputs, subtle containers */
+
+  /* Text */
+  --color-text: #232523;
+  --color-text-muted: #636561;
+  --color-text-subtle: #949893;
+  --color-text-inverted: #ffffff;
+
+  /* Brand */
+  --color-primary: #2d6a4f;
+  --color-primary-hover: #1f412c;
+  --color-secondary: #6bbfbf;
+  --color-secondary-hover: #275756;
+  --color-tertiary: #8d4d4e;
+  --color-tertiary-hover: #562a2c;
+
+  /* UI */
+  --color-border: #c2c7c1;
+  --color-input: #e7eae5;
+  --color-focus: #2d6a4f;
+
+  /* Status */
+  --color-error: #c1121f;
+  --color-error-hover: #9d0e19;
+}
+
+@theme {
+  --color-bg: var(--color-bg);
+  --color-bg-muted: var(--color-bg-muted);
+  --color-surface: var(--color-surface);
+  --color-surface-muted: var(--color-surface-muted);
+
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-subtle: var(--color-text-subtle);
+  --color-text-inverted: var(--color-text-inverted);
+
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+
+  --color-secondary: var(--color-secondary);
+  --color-secondary-hover: var(--color-secondary-hover);
+
+  --color-tertiary: var(--color-tertiary);
+  --color-tertiary-hover: var(--color-tertiary-hover);
+
+  --color-border: var(--color-border);
+  --color-input: var(--color-input);
+  --color-focus: var(--color-focus);
+
+  --color-error: var(--color-error);
+  --color-error-hover: var(--color-error-hover);
+}
+
+:root {
+  /* ================================
+     Typography
+     ================================ */
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Text colors */
+  --color-text: #202322;
+  --color-text-muted: #686d69;
+  --color-text-subtle: #858a86;
+  --color-text-disabled: #a5aaa6;
+  --color-text-inverted: #ffffff;
+
+  /* Font sizes */
+  --text-xs: 0.6875rem;   /* 11px */
+  --text-sm: 0.8125rem;   /* 13px */
+  --text-base: 0.9375rem; /* 15px */
+  --text-lg: 1.0625rem;   /* 17px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+
+  /* Line heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
+
+  /* Font weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Letter spacing */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-label: 0.06em;
+}
+
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  border-color: var(--color-border);
+}
+
+/* ================================
+   Base typography
+   ================================ */
+
+html {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+}
+
+
+/* ================================
+   Headings
+   ================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+h3 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: -0.015em;
+}
+
+h4 {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-snug);
+}
+
+h5 {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-snug);
+}
+
+h6 {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-snug);
+}
+
+
+/* ================================
+   Body text
+   ================================ */
+
+p {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-subtle {
+  color: var(--color-text-subtle);
+}
+
+.text-disabled {
+  color: var(--color-text-disabled);
+}
+
+
+/* ================================
+   Small / supporting text
+   ================================ */
+
+.text-sm {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+.text-xs {
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+}
+
+
+/* ================================
+   Labels
+   ================================ */
+
+label,
+.text-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+}
+
+
+/* ================================
+   Eyebrow / section labels
+   ================================ */
+
+.text-eyebrow {
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+
+/* ================================
+   Navigation
+   ================================ */
+
+.text-nav {
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+
+/* ================================
+   Buttons
+   ================================ */
+
+button,
+.text-button {
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+
+/* ================================
+   Links
+   ================================ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.text-link {
+  font-size: inherit;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+
+/* ================================
+   Metadata
+   ================================ */
+
+.text-meta {
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+  color: var(--color-text-muted);
+}
+
+.text-caption {
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-normal);
+  color: var(--color-text-subtle);
+}
+
+
+/* ================================
+   Numbers / timestamps
+   ================================ */
+
+.text-data {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ================================
+   Strong text
+   ================================ */
+
+strong,
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+b {
+  font-weight: var(--font-weight-semibold);
+}
+
+@theme inline {
+  --font-sans: var(--font-sans);
+
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-subtle: var(--color-text-subtle);
+  --color-text-disabled: var(--color-text-disabled);
+  --color-text-inverted: var(--color-text-inverted);
+
+  --text-xs: var(--text-xs);
+  --text-sm: var(--text-sm);
+  --text-base: var(--text-base);
+  --text-lg: var(--text-lg);
+  --text-xl: var(--text-xl);
+  --text-2xl: var(--text-2xl);
+  --text-3xl: var(--text-3xl);
+  --text-4xl: var(--text-4xl);
+
+  --font-weight-regular: var(--font-weight-regular);
+  --font-weight-medium: var(--font-weight-medium);
+  --font-weight-semibold: var(--font-weight-semibold);
+  --font-weight-bold: var(--font-weight-bold);
+
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+}
+
+/* link hover animation */
+.link-hover {
+  @apply cursor-pointer relative after:absolute after:h-0.5 after:bg-primary after:bottom-0 after:left-0 after:w-0 after:transition-all after:duration-200 after:ease-in-out;
+}
+.link-hover:hover {
+  @apply after:w-full;
+}
