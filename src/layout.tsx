@@ -36,11 +36,11 @@ const navLinks = [
         icon: NotebookText
     },
     {   title: "Schedule", 
-        path: "/",
+        path: "/schedule",
         icon: Calendar
     },
     {   title: "Notifications", 
-        path: "/",
+        path: "/notifications",
         icon: Bell
     }
 ]
