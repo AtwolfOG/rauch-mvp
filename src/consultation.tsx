@@ -21,13 +21,12 @@ export default function Consultation() {
       transcript: ["Hi Eleanor, I'm having some issues with my heart lately."],
       startTime: null,
       time: "00:00",
-      isMuted: false,
     });
     const handleClick = () => {
       if(state.isRecording) {
         if(state.speechRecognition) {
           state.speechRecognition.stop();
-          dispatch({ type: "STOP_RECORDING" });
+          dispatch({ type: "STOP_RECORDING", payload: null });
         }
       } else {
         const speechRecognition = startTranscript(dispatch);
@@ -47,7 +46,7 @@ export default function Consultation() {
           };
           // handle end
           speechRecognition.onend = () => {
-            dispatch({ type: "STOP_RECORDING" });
+            dispatch({ type: "STOP_RECORDING", payload: null });
             toast.success("Speech recognition service disconnected.");
           };
         }
@@ -82,7 +81,7 @@ export default function Consultation() {
           </header>
           <div className="flex flex-col gap-8 w-[90%] max-w-[700px] mx-auto py-24">
               <div className="flex flex-col items-center my-12">
-                <div onClick={()=>{dispatch({type: "TOGGLE_MUTED"})}} className={cn("border p-6 my-6 rounded-full cursor-pointer bg-primary/90 hover:bg-primary text-text-inverted transition-all duration-300", state.isMuted? "bg-error/80 hover:bg-error" : "")}>{state.isMuted? <MicOff size={32}/> : <Mic size={32}/>}</div>
+                <div onClick={()=>{dispatch({type: "TOGGLE_MUTED", payload: null})}} className={cn("border p-6 my-6 rounded-full cursor-pointer bg-primary/90 hover:bg-primary text-text-inverted transition-all duration-300", state.isMuted? "bg-error/80 hover:bg-error" : "")}>{state.isMuted? <MicOff size={32}/> : <Mic size={32}/>}</div>
                 <h2 className="mt-4">{state.time}</h2>
                 <p className="text-muted!">{state.isRecording ? "Stop" : "Click to start recording"}</p>
               </div>
@@ -119,10 +118,10 @@ export default function Consultation() {
     )
 }   
 
-function reducer(state: State, {type, payload}: {type: string, payload: SpeechRecognition | SpeechRecognitionEvent | string | null}) {
+function reducer(state: State, {type, payload}: {type: string, payload: SpeechRecognition | string | null}) {
   switch (type) {
     case 'START_RECORDING':{
-      const newState = {...state, isRecording: true, speechRecognition: payload, startTime: new Date()}
+      const newState = {...state, isRecording: true, speechRecognition: payload as SpeechRecognition, startTime: new Date()}
       return newState;
     }
     case 'STOP_RECORDING':{
@@ -130,7 +129,6 @@ function reducer(state: State, {type, payload}: {type: string, payload: SpeechRe
       return newState;
     }
     case 'ADD_TRANSCRIPT':{
-      console.log("hit")
       payload = (payload as string).trim();
       if (!payload) return state;
       if (state.transcript.length <= 0){
@@ -150,12 +148,8 @@ function reducer(state: State, {type, payload}: {type: string, payload: SpeechRe
       const newState = {...state, transcript: [...state.transcript, payload as string]}
       return newState;
     }
-    case 'SET_RECORDING':{
-      const newState = {...state, recording: payload}
-      return newState;
-    }
     case 'SET_TIME':{
-      const newState = {...state, time: payload}
+      const newState = {...state, time: payload as string}
       return newState;
     }
     case 'TOGGLE_MUTED':{
