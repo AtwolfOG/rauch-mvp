@@ -2,6 +2,7 @@ import { cn } from "cn";
 import { Plus } from "lucide-react";
 import { useState } from "react";
 import { HorizontalSeparator } from "./components/seperator";
+import { Link } from "react-router";
 
 
 const queries = [
@@ -53,7 +54,7 @@ export default function Patients() {
                   </div>
                   <HorizontalSeparator/>
                   <div className="flex items-center gap-4 ml-auto">
-                    <a href="/patients/consultation"><button className="border border-border px-4 py-2 rounded bg-primary-light hover:bg-primary text-primary hover:text-text-inverted hover:border-primary transition-all duration-300">Start Consultation</button></a>
+                    <Link to="/patients/consultation"><button className="border border-border px-4 py-2 rounded bg-primary-light hover:bg-primary text-primary hover:text-text-inverted hover:border-primary transition-all duration-300">Start Consultation</button></Link>
                     <button className="border border-border px-4 py-2 rounded">View Detatils</button>
                   </div>
                 </div>
